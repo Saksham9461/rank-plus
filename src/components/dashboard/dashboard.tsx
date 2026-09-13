@@ -23,6 +23,7 @@ import { ContentScreen } from './pages/content-screen';
 import { AiSeoScreen } from './pages/ai-seo-screen';
 import { ReportsScreen } from './pages/reports-screen';
 import { SettingsScreen } from './pages/settings-screen';
+import { SchemaGeneratorScreen } from './pages/schema-generator-screen';
 import { kpis } from '@/lib/seo-data';
 import { cn } from '@/lib/utils';
 
@@ -87,6 +88,8 @@ export function Dashboard() {
         return <ReportsScreen />;
       case 'Settings':
         return <SettingsScreen />;
+      case 'Schema Generator':
+        return <SchemaGeneratorScreen />;
       default:
         return <DashboardSkeleton />;
     }

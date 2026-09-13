@@ -286,6 +286,7 @@ export const sidebarItems = [
   { label: 'AI SEO', icon: 'Sparkles' },
   { label: 'Reports', icon: 'BarChart3' },
   { label: 'Settings', icon: 'Settings' },
+  { label: 'Schema Generator', icon: 'Braces' },
 ];
 
 export const notifications = [

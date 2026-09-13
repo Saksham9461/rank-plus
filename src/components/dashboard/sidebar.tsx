@@ -9,6 +9,7 @@ import {
   Sparkles,
   BarChart3,
   Settings,
+  Braces,
   TrendingUp,
   PanelLeftClose,
   PanelLeft,
@@ -27,6 +28,7 @@ const iconMap = {
   Sparkles,
   BarChart3,
   Settings,
+  Braces,
 };
 
 interface SidebarProps {
