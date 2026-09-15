@@ -277,6 +277,7 @@ export const projects = [
 
 export const sidebarItems = [
   { label: 'Dashboard', icon: 'LayoutDashboard', active: true },
+  { label: 'Schema Generator', icon: 'Braces' },
   { label: 'Projects', icon: 'FolderKanban' },
   { label: 'Keyword Rankings', icon: 'Search' },
   { label: 'Site Audit', icon: 'ShieldCheck' },
@@ -285,8 +286,6 @@ export const sidebarItems = [
   { label: 'Content', icon: 'FileText' },
   { label: 'AI SEO', icon: 'Sparkles' },
   { label: 'Reports', icon: 'BarChart3' },
-  { label: 'Settings', icon: 'Settings' },
-  { label: 'Schema Generator', icon: 'Braces' },
 ];
 
 export const notifications = [

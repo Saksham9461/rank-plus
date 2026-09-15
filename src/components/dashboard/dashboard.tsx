@@ -22,7 +22,6 @@ import { CompetitorsScreen } from './pages/competitors-screen';
 import { ContentScreen } from './pages/content-screen';
 import { AiSeoScreen } from './pages/ai-seo-screen';
 import { ReportsScreen } from './pages/reports-screen';
-import { SettingsScreen } from './pages/settings-screen';
 import { SchemaGeneratorScreen } from './pages/schema-generator-screen';
 import { kpis } from '@/lib/seo-data';
 import { cn } from '@/lib/utils';
@@ -72,8 +71,6 @@ export function Dashboard() {
         );
       case 'Projects':
         return <ProjectsScreen />;
-        case 'Schema Generator':
-        return <SchemaGeneratorScreen />;
       case 'Keyword Rankings':
         return <KeywordRankingsScreen />;
       case 'Site Audit':
@@ -88,6 +85,8 @@ export function Dashboard() {
         return <AiSeoScreen />;
       case 'Reports':
         return <ReportsScreen />;
+      case 'Schema Generator':
+        return <SchemaGeneratorScreen />;
       default:
         return <DashboardSkeleton />;
     }

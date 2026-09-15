@@ -8,7 +8,6 @@ import {
   FileText,
   Sparkles,
   BarChart3,
-  Settings,
   Braces,
   TrendingUp,
   PanelLeftClose,
@@ -27,7 +26,6 @@ const iconMap = {
   FileText,
   Sparkles,
   BarChart3,
-  Settings,
   Braces,
 };
 
