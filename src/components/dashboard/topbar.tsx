@@ -16,7 +16,11 @@ import { useTheme } from '@/components/theme-provider';
 import { useAuth } from '@/lib/auth-context';
 import { projects, notifications } from '@/lib/seo-data';
 
-export function Topbar() {
+interface TopbarProps {
+  onNavigate: (label: string) => void;
+}
+
+export function Topbar({ onNavigate }: TopbarProps) {
   const { theme, toggleTheme } = useTheme();
   const { user, logout } = useAuth();
   const [projectOpen, setProjectOpen] = useState(false);
@@ -163,11 +167,23 @@ export function Topbar() {
                   </div>
                 </div>
                 <div className="my-1.5 border-t" />
-                <button className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors hover:bg-muted">
+                <button
+                  onClick={() => {
+                    onNavigate('Settings');
+                    setUserOpen(false);
+                  }}
+                  className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors hover:bg-muted"
+                >
                   <User className="h-4 w-4 text-muted-foreground" />
                   Profile
                 </button>
-                <button className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors hover:bg-muted">
+                <button
+                  onClick={() => {
+                    onNavigate('Settings');
+                    setUserOpen(false);
+                  }}
+                  className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors hover:bg-muted"
+                >
                   <Settings className="h-4 w-4 text-muted-foreground" />
                   Settings
                 </button>

@@ -22,6 +22,7 @@ import { CompetitorsScreen } from './pages/competitors-screen';
 import { ContentScreen } from './pages/content-screen';
 import { AiSeoScreen } from './pages/ai-seo-screen';
 import { ReportsScreen } from './pages/reports-screen';
+import { SettingsScreen } from './pages/settings-screen';
 import { SchemaGeneratorScreen } from './pages/schema-generator-screen';
 import { kpis } from '@/lib/seo-data';
 import { cn } from '@/lib/utils';
@@ -85,6 +86,8 @@ export function Dashboard() {
         return <AiSeoScreen />;
       case 'Reports':
         return <ReportsScreen />;
+      case 'Settings':
+        return <SettingsScreen />;
       case 'Schema Generator':
         return <SchemaGeneratorScreen />;
       default:
@@ -106,7 +109,7 @@ export function Dashboard() {
           sidebarOpen ? 'lg:pl-64' : 'lg:pl-[76px]'
         )}
       >
-        <Topbar />
+        <Topbar onNavigate={handleNavigate} />
         <main className="scrollbar-thin flex-1 overflow-y-auto p-4 md:p-6">
           {loading && activePage === 'Dashboard' ? <DashboardSkeleton /> : renderPage()}
         </main>
