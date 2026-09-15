@@ -7,16 +7,22 @@ import {
   ChevronDown,
   Calendar,
   Check,
+  LogOut,
+  User,
+  Settings,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/components/theme-provider';
+import { useAuth } from '@/lib/auth-context';
 import { projects, notifications } from '@/lib/seo-data';
 
 export function Topbar() {
   const { theme, toggleTheme } = useTheme();
+  const { user, logout } = useAuth();
   const [projectOpen, setProjectOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(projects[0]);
   const [notifOpen, setNotifOpen] = useState(false);
+  const [userOpen, setUserOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b bg-background/80 px-4 backdrop-blur-xl md:px-6">
@@ -129,14 +135,53 @@ export function Topbar() {
           )}
         </button>
 
-        <div className="flex items-center gap-2.5 rounded-xl border bg-card py-1 pl-1 pr-3 transition-colors hover:bg-muted">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-chart-4 to-chart-5 text-xs font-bold text-white">
-            JD
-          </div>
-          <div className="hidden leading-tight sm:block">
-            <p className="text-xs font-semibold">Jamie Doe</p>
-            <p className="text-[10px] text-muted-foreground">Pro Plan</p>
-          </div>
+        <div className="relative">
+          <button
+            onClick={() => setUserOpen((v) => !v)}
+            className="flex items-center gap-2.5 rounded-xl border bg-card py-1 pl-1 pr-3 transition-colors hover:bg-muted"
+          >
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-chart-4 to-chart-5 text-xs font-bold text-white">
+              {user?.initials ?? 'JD'}
+            </div>
+            <div className="hidden leading-tight sm:block">
+              <p className="text-xs font-semibold">{user?.name ?? 'Jamie Doe'}</p>
+              <p className="text-[10px] text-muted-foreground">{user?.plan ?? 'Pro Plan'}</p>
+            </div>
+            <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+          </button>
+          {userOpen && (
+            <>
+              <div className="fixed inset-0 z-10" onClick={() => setUserOpen(false)} />
+              <div className="absolute right-0 top-12 z-20 w-60 rounded-xl border bg-popover p-2 shadow-xl">
+                <div className="flex items-center gap-3 rounded-lg px-2.5 py-2.5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-chart-4 to-chart-5 text-xs font-bold text-white">
+                    {user?.initials ?? 'JD'}
+                  </div>
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-semibold">{user?.name ?? 'Jamie Doe'}</p>
+                    <p className="truncate text-xs text-muted-foreground">{user?.email ?? 'jamie@acme.com'}</p>
+                  </div>
+                </div>
+                <div className="my-1.5 border-t" />
+                <button className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors hover:bg-muted">
+                  <User className="h-4 w-4 text-muted-foreground" />
+                  Profile
+                </button>
+                <button className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors hover:bg-muted">
+                  <Settings className="h-4 w-4 text-muted-foreground" />
+                  Settings
+                </button>
+                <div className="my-1.5 border-t" />
+                <button
+                  onClick={logout}
+                  className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm font-medium text-destructive transition-colors hover:bg-destructive/10"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Log out
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </header>
