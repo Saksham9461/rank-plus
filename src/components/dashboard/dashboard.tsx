@@ -72,6 +72,8 @@ export function Dashboard() {
         );
       case 'Projects':
         return <ProjectsScreen />;
+        case 'Schema Generator':
+        return <SchemaGeneratorScreen />;
       case 'Keyword Rankings':
         return <KeywordRankingsScreen />;
       case 'Site Audit':
@@ -86,10 +88,6 @@ export function Dashboard() {
         return <AiSeoScreen />;
       case 'Reports':
         return <ReportsScreen />;
-      case 'Settings':
-        return <SettingsScreen />;
-      case 'Schema Generator':
-        return <SchemaGeneratorScreen />;
       default:
         return <DashboardSkeleton />;
     }
